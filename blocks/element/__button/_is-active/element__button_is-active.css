@@ -1,0 +1,17 @@
+.element__button_is-active {
+  padding: 0;
+  margin: 0;
+  min-width: 22px;
+  height: 19px;
+  background-image: url(../../../../images/likeblack.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #FFFFFF;
+  background-position: center;
+  border: none;
+}
+
+.element__button_is-active:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
