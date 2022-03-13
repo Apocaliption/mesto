@@ -5,8 +5,8 @@ const popupOpenEditButtonElement = document.querySelector('.profile__edit-button
 
 //объявляем переменные для изменения и сохранения "имя" и "о себе"
 const formElement = document.querySelector('.popup__form');
-const nameInput = formElement.querySelector('.popup__input_name');
-const descriptionInput = formElement.querySelector('.popup__input_description');
+const nameInput = formElement.querySelector('.popup__input_type_name');
+const descriptionInput = formElement.querySelector('.popup__input_type_description');
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
