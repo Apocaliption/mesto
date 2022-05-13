@@ -25,24 +25,20 @@ const initialCards = [
   },
 ];
 
-const addCardPopup = document.querySelector(".addcard");
+const popupCard = document.querySelector(".addcard");
 const popupOpenButtonAddCard = document.querySelector(".profile__add-button");
-const popupCloseButtonAddCard = addCardPopup.querySelector(
-  ".popup__close-button"
-);
-const formElementAddCard = addCardPopup.querySelector(".popup__form");
-const nameInputAddCard = addCardPopup.querySelector(".popup__input_type_name");
-const linkPicInput = addCardPopup.querySelector(
-  ".popup__input_type_description"
-);
-const popupElement = document.querySelector(".editprofile");
-const popupCloseButtonElement = popupElement.querySelector(
+const popupCloseButtonAddCard = popupCard.querySelector(".popup__close-button");
+const formProfileAddCard = popupCard.querySelector(".popup__form");
+const nameInputAddCard = popupCard.querySelector(".popup__input_type_name");
+const linkPicInput = popupCard.querySelector(".popup__input_type_description");
+const popupProfile = document.querySelector(".editprofile");
+const popupCloseButtonElement = popupProfile.querySelector(
   ".popup__close-button"
 );
 const popupOpenEditButtonElement = document.querySelector(
   ".profile__edit-button"
 );
-const formElement = popupElement.querySelector(".popup__form");
+const formProfile = popupProfile.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__input_type_name");
 const descriptionInput = document.querySelector(
   ".popup__input_type_description"
@@ -57,7 +53,17 @@ const popupCloseButtonBigImg = popupOpenImg.querySelector(
   ".popup__close-button"
 );
 
-function formSubmitHandler(evt) {
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+  nameInput.value = profileName.textContent;
+  descriptionInput.value = profileDescription.textContent;
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+
+function formSubmitHandlerProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
@@ -72,38 +78,25 @@ const handleLikeNewCard = (event) => {
   event.target.classList.toggle("element__button_is-active");
 };
 
-formElement.addEventListener("submit", formSubmitHandler);
+formProfile.addEventListener("submit", formSubmitHandlerProfile);
 
 //Попап редактирования профиля
 
-const openPopup = () => {
-  popupElement.classList.add("popup_opened");
-};
-
-const closePopup = () => {
-  popupElement.classList.remove("popup_opened");
-};
-
 popupOpenEditButtonElement.addEventListener("click", function () {
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
-  openPopup();
+  openPopup(popupProfile);
 });
 
-popupCloseButtonElement.addEventListener("click", closePopup);
+popupCloseButtonElement.addEventListener("click", function () {
+  closePopup(popupProfile);
+});
 
 //Попап добавления карточки
-
-const openPopupAddCard = () => {
-  addCardPopup.classList.add("popup_opened");
-};
-
-const closePopupAddCard = () => {
-  addCardPopup.classList.remove("popup_opened");
-};
-
-popupOpenButtonAddCard.addEventListener("click", openPopupAddCard);
-popupCloseButtonAddCard.addEventListener("click", closePopupAddCard);
+popupOpenButtonAddCard.addEventListener("click", function () {
+  openPopup(popupCard);
+});
+popupCloseButtonAddCard.addEventListener("click", function () {
+  closePopup(popupCard);
+});
 
 // Создание карточки
 
@@ -140,13 +133,13 @@ function formSubmitHandlerAddCard(evt) {
   evt.preventDefault();
   const placeName = nameInputAddCard.value;
   const placePic = linkPicInput.value;
-  formElementAddCard.reset();
   newCard = addCard(placeName, placePic);
-  renderCard(newCard, "append");
+  renderCard(newCard);
   closePopupAddCard();
+  formProfileAddCard.reset();
 }
 
-formElementAddCard.addEventListener("submit", formSubmitHandlerAddCard);
+formProfileAddCard.addEventListener("submit", formSubmitHandlerAddCard);
 
 //Закрытие попапа развернутой картинки
 const closePopupOpenImg = () => {
@@ -163,5 +156,5 @@ function renderCard(newCard) {
 
 initialCards.forEach(function (item) {
   newCard = addCard(item.name, item.link);
-  renderCard(newCard, "append");
+  renderCard(newCard);
 });
