@@ -1,0 +1,17 @@
+.popup__container_bigimg {
+  max-width: 75vw;
+  height: 75vh;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0);
+  vertical-align: center;
+  position: relative;
+}
+
+
+@media screen and (max-width: 374px) {
+  .popup__container_bigimg {
+    height: auto;
+    max-height: 75vh;
+    width: auto;
+  }
+}
