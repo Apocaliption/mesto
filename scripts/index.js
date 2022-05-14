@@ -135,7 +135,7 @@ function formSubmitHandlerAddCard(evt) {
   const placePic = linkPicInput.value;
   newCard = addCard(placeName, placePic);
   renderCard(newCard);
-  closePopupAddCard();
+  closePopup(popupCard);
   formProfileAddCard.reset();
 }
 
