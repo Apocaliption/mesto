@@ -55,8 +55,6 @@ const popupCloseButtonBigImg = popupOpenImg.querySelector(
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
 }
 
 function closePopup(popup) {
@@ -67,7 +65,7 @@ function formSubmitHandlerProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  closePopup();
+  closePopup(popupProfile);
 }
 
 const handleDeleteNewCard = (event) => {
@@ -83,6 +81,8 @@ formProfile.addEventListener("submit", formSubmitHandlerProfile);
 //Попап редактирования профиля
 
 popupOpenEditButtonElement.addEventListener("click", function () {
+  nameInput.value = profileName.textContent;
+  descriptionInput.value = profileDescription.textContent;
   openPopup(popupProfile);
 });
 
