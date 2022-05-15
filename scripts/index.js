@@ -123,7 +123,7 @@ function addCard(title, img) {
   linkCard.addEventListener("click", function () {
     popupBigImg.src = img;
     popupImgSubitle.textContent = title;
-    popupOpenImg.classList.add("popup_opened");
+    openPopup(popupOpenImg);
   });
 
   return newCard;
@@ -143,7 +143,7 @@ formProfileAddCard.addEventListener("submit", formSubmitHandlerAddCard);
 
 //Закрытие попапа развернутой картинки
 const closePopupOpenImg = () => {
-  popupOpenImg.classList.remove("popup_opened");
+  closePopup(popupOpenImg);
 };
 
 popupCloseButtonBigImg.addEventListener("click", closePopupOpenImg);
