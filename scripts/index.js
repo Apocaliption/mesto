@@ -32,6 +32,7 @@ const formProfileAddCard = popupCard.querySelector(".popup__form");
 const nameInputAddCard = popupCard.querySelector(".popup__input_type_name");
 const linkPicInput = popupCard.querySelector(".popup__input_type_description");
 const popupProfile = document.querySelector(".editprofile");
+const btnSaveCard = popupCard.querySelector('.popup__save-button');
 const popupCloseButtonElement = popupProfile.querySelector(
   ".popup__close-button"
 );
@@ -55,11 +56,28 @@ const popupCloseButtonBigImg = popupOpenImg.querySelector(
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  popup.addEventListener('mousedown', clickPopupOverlay);
+  document.addEventListener("keyup", handlePressEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener('mousedown', clickPopupOverlay);
+  document.removeEventListener("keyup", handlePressEsc);
 }
+
+const handlePressEsc = (event) => {
+  if (event.key === "Escape") {
+    const popup = document.querySelector(".popup_opened");
+    closePopup(popup);
+  }
+};
+
+  function clickPopupOverlay(evt) {
+    if (evt.target === evt.currentTarget){
+        closePopup(evt.target)
+    };
+};
 
 function formSubmitHandlerProfile(evt) {
   evt.preventDefault();
@@ -135,6 +153,7 @@ function formSubmitHandlerAddCard(evt) {
   const placePic = linkPicInput.value;
   newCard = addCard(placeName, placePic);
   renderCard(newCard);
+  btnSaveCard.classList.add('popup__save-button_disabled');
   closePopup(popupCard);
   formProfileAddCard.reset();
 }
