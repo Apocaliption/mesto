@@ -1,3 +1,7 @@
+import Card from './Card.js'
+import FormValidator from './FormValidator.js'
+import {initialCards} from './cards.js'
+
 const popupCard = document.querySelector(".addcard");
 const popupOpenButtonAddCard = document.querySelector(".profile__add-button");
 const popupCloseButtonAddCard = popupCard.querySelector(".popup__close-button");
@@ -28,6 +32,15 @@ const popupCloseButtonBigImg = popupOpenImg.querySelector(
 );
 const cardContainer = document.querySelector(".elements");
 
+export const validData = ({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error-visible",
+});
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener('mousedown', clickPopupOverlay);
@@ -47,10 +60,10 @@ const handlePressEsc = (event) => {
   }
 };
 
-  function clickPopupOverlay(evt) {
-    if (evt.target === evt.currentTarget){
-        closePopup(evt.target)
-    };
+function clickPopupOverlay(evt) {
+  if (evt.target === evt.currentTarget){
+      closePopup(evt.target)
+  };
 };
 
 function handleProfileFormSubmit(evt) {
@@ -59,14 +72,6 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = descriptionInput.value;
   closePopup(popupProfile);
 }
-
-const handleDeleteNewCard = (event) => {
-  event.target.closest(".element").remove();
-};
-
-const handleLikeNewCard = (event) => {
-  event.target.classList.toggle("element__button_is-active");
-};
 
 formProfile.addEventListener("submit", handleProfileFormSubmit);
 
@@ -93,44 +98,19 @@ popupCloseButtonAddCard.addEventListener("click", function () {
   closePopup(popupCard);
 });
 
-// Создание карточки
-
-const cardTemplate = document
-  .querySelector("#template")
-  .content.querySelector(".element");
-
-function addCard(title, img) {
-  const newCard = cardTemplate.cloneNode(true);
-
-  const titleCard = newCard.querySelector(".element__title");
-  const linkCard = newCard.querySelector(".element__image");
-
-  titleCard.textContent = title;
-  linkCard.alt = title;
-  linkCard.src = img;
-  // Удаление карточки
-  const deleteButton = newCard.querySelector(".element__button-trash");
-  deleteButton.addEventListener("click", handleDeleteNewCard);
-  // Лайк карточки
-  const likeButton = newCard.querySelector(".element__button");
-  likeButton.addEventListener("click", handleLikeNewCard);
-  // Попап развернутой картинки
-  linkCard.addEventListener("click", function () {
-    popupBigImg.src = img;
-    popupBigImg.alt = title;
-    popupImgSubitle.textContent = title;
-    openPopup(popupOpenImg);
-  });
-
-  return newCard;
-}
+  export function handleCardClick(name, link) {
+  popupBigImg.src = link;
+  popupBigImg.alt = name;
+  popupImgSubitle.textContent = name;
+  openPopup(popupOpenImg);
+  }
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-  const placeName = nameInputAddCard.value;
-  const placePic = linkPicInput.value;
-  newCard = addCard(placeName, placePic);
-  renderCard(newCard);
+  const data = {}
+  data.name = nameInputAddCard.value;
+  data.link = linkPicInput.value;
+  renderCard(cardContainer, data, '#template');
   btnSaveCard.classList.add('popup__save-button_disabled');
   closePopup(popupCard);
   formProfileAddCard.reset();
@@ -146,11 +126,46 @@ const closePopupOpenImg = () => {
 popupCloseButtonBigImg.addEventListener("click", closePopupOpenImg);
 
 // Рендер карточки
-function renderCard(newCard) {
-  cardContainer.prepend(newCard);
+function renderCard(parent, data, cardSelector) {
+  const card = new Card(data, cardSelector)
+  const cardElement = card.addCard()
+  parent.prepend(cardElement)
 }
 
 initialCards.forEach(function (item) {
-  newCard = addCard(item.name, item.link);
-  renderCard(newCard);
+  renderCard(cardContainer, item, '#template')
 });
+
+const validationAddCard = new FormValidator(validData, popupCard)
+validationAddCard.enableValidation()
+
+const validationEditProfile = new FormValidator(validData, popupProfile)
+validationEditProfile.enableValidation()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
