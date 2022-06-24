@@ -40,9 +40,18 @@ export default class FormValidator {
   _toggleButtonState = () => {
     if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.disabled = true;
     } else {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.disabled = false;
     }
+  }
+
+  resetButtonCard = () => {
+    const popupCard = document.querySelector(".addcard");
+    const btnSaveCard = popupCard.querySelector('.popup__save-button');
+
+    btnSaveCard.classList.add('popup__save-button_disabled');
   }
 
   _setEventListeners() {

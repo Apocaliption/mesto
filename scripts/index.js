@@ -111,7 +111,7 @@ function handleAddCardFormSubmit(evt) {
   data.name = nameInputAddCard.value;
   data.link = linkPicInput.value;
   renderCard(cardContainer, data, '#template');
-  btnSaveCard.classList.add('popup__save-button_disabled');
+  validationAddCard.resetButtonCard();
   closePopup(popupCard);
   formProfileAddCard.reset();
 }
