@@ -60,8 +60,6 @@ export default class FormValidator {
     this._disableSubmitButton();
   }
 
-  debugger;
-
   _setEventListeners() {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
