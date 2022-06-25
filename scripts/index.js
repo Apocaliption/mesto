@@ -95,6 +95,7 @@ popupOpenButtonAddCard.addEventListener("click", function () {
   openPopup(popupCard);
 });
 popupCloseButtonAddCard.addEventListener("click", function () {
+  formProfileAddCard.reset();
   closePopup(popupCard);
 });
 
@@ -111,9 +112,9 @@ function handleAddCardFormSubmit(evt) {
   data.name = nameInputAddCard.value;
   data.link = linkPicInput.value;
   renderCard(cardContainer, data, '#template');
-  validationAddCard.resetButtonCard();
-  closePopup(popupCard);
   formProfileAddCard.reset();
+  closePopup(popupCard);
+  validationAddCard.resetButtonCard();
 }
 
 formProfileAddCard.addEventListener("submit", handleAddCardFormSubmit);

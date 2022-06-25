@@ -55,10 +55,11 @@ export default class FormValidator {
     }
   }
 
-  resetButtonCard = () => {
-    this._inputList.forEach((input) =>  this._hideInputError(input))
+  resetButtonCard() {
     this._disableSubmitButton();
-  }
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)});
+    }
 
   _setEventListeners() {
     this._toggleButtonState();
