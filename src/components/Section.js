@@ -6,9 +6,9 @@ export class Section {
   }
 
   renderItems() {
-    this._items.forEach(data => {
-      this._renderer(data, this._container, '#template')
-    });
+    this._items.forEach((data) => {
+      this._renderer(data, this._container)
+    })
   }
 
   addItem(element) {

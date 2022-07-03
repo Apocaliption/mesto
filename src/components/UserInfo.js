@@ -16,5 +16,3 @@ export class UserInfo {
     this._descriptionElement.textContent = description
   }
 }
-
-// new UserInfo({profileNameSelector: profile__name, profileDescriptionSelector: profile__description})
