@@ -1,4 +1,3 @@
-import { handleCardClick } from './index.js'
 
 export default class Card {
   constructor(data, cardSelector, handleCardClick) {
@@ -9,23 +8,25 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
-
+    const cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".element")
+      .cloneNode(true);
     return cardElement;
   }
   
-  _handleLikeNewCard = (event) => {
-    event.target.classList.toggle("element__button_is-active");
+  _handleLikeNewCard = () => {
+    this._element.querySelector(".element__button").classList.toggle("element__button_is-active");
   }
 
-  _handleDeleteNewCard = (event) => {
+  _handleDeleteNewCard = () => {
     this._element.remove();
   }
 
   _setEventListeners() {
-    this._element.querySelector(".element__button-trash").addEventListener("click", (event) => { this._handleDeleteNewCard(event) })
-    this._element.querySelector(".element__button").addEventListener("click", (event) => { this._handleLikeNewCard(event) })
-    this._element.querySelector(".element__image").addEventListener("click", () => {handleCardClick(this._name , this._link);});
+    this._element.querySelector(".element__button").addEventListener("click", () => this._handleLikeNewCard());
+    this._element.querySelector(".element__button-trash").addEventListener("click", () => this._handleDeleteNewCard());
+    this._element.querySelector(".element__image").addEventListener("click", () => this._handleCardClick());
     }
 
   addCard() {
