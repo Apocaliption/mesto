@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-<script defer src="main.2ea0bb47fd9067d7c4e6.js"></script><link href="main.e403d9430bd572d05da2.css" rel="stylesheet"></head>
+<script defer src="main.9b0de19e84200c6420e0.js"></script><link href="main.c82396dcbc94c6e4d7eb.css" rel="stylesheet"></head>
 <body class="page">
   <header class="header">
     <img src="static/Vector3.03b78ada3425e9132ff3.svg" alt="Логотип" class="header__logo">
@@ -50,8 +50,8 @@
           <span class="popup__input-error title-input-error"></span>
           </label>
           <label class="popup__label">
-            <input type="url" name="link" id="url-input" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
-          <span class="popup__input-error url-input-error"></span>
+            <input type="url" name="description" id="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
+          <span class="popup__input-error url-error"></span>
           </label>
           <button class="popup__save-button popup__save-button_disabled" type="submit" disabled>Создать</button>
         </form>
@@ -72,8 +72,8 @@
         <button class="popup__close-button" type="button"></button>
         <form class="popup__form popup__form-add" name="editProfileForm" novalidate>
           <label class="popup__label">
-            <input type="url" name="link" id="url-input" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
-          <span class="popup__input-error url-input-error"></span>
+            <input type="url" name="avatar" id="avatar" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
+          <span class="popup__input-error avatar-error"></span>
           </label>
           <button class="popup__save-button popup__save-button_disabled" type="submit">Создать</button>
         </form>
@@ -86,6 +86,7 @@
         <h3 class= "popup__subtitle">Кот</h3>
       </div>
     </div>
+  </div>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy;2022. Mesto Russia</p>
@@ -96,7 +97,10 @@
       <button class="element__button-trash" type="button"></button>
       <div class="element__container">
         <h2 class="element__title"></h2>
-        <button class="element__button" type="button"></button>
+        <div class="element__like-container">
+          <button class="element__button" type="button"></button>
+          <span class="element__like-counter">0</span>
+        </div>
       </div>  
     </article>
   </template>
