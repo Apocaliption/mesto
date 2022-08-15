@@ -19,3 +19,11 @@ export const validData = ({
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error-visible",
 });
+
+
+export const popupAvatar = document.querySelector('.avatar');
+export const avatar = document.querySelector('.profile__avatar');
+export const profileNameSelector = '.profile__name';
+export const profileDescriptionSelector = '.profile__description';
+export const avatarSelector = '.profile__avatar';
+

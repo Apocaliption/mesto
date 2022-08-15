@@ -1,18 +1,20 @@
 export class UserInfo {
-  constructor({profileNameSelector, profileDescriptionSelector}) {
-    this._nameElement = document.querySelector(profileNameSelector)
-    this._descriptionElement = document.querySelector(profileDescriptionSelector)
+  constructor(profileNameSelector, profileDescriptionSelector, avatarSelector) {
+    this._name = document.querySelector(profileNameSelector)
+    this._description = document.querySelector(profileDescriptionSelector)
+    this._avatar = document.querySelector(avatarSelector)
   }
 
   getUserInfo() {
     return {
-      name: this._nameElement.textContent,
-      description: this._descriptionElement.textContent
+      name: this._name.textContent,
+      description: this._description.textContent,
     }
   }
 
-  setUserInfo(title, description) {
-    this._nameElement.textContent = title
-    this._descriptionElement.textContent = description
+  setUserInfo ({name, about, avatar}) {
+    this._name.textContent = name;
+    this._description.textContent = about;
+    this._avatar.style.backgroundImage = `url(${avatar})`;
   }
 }

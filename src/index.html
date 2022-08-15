@@ -12,7 +12,7 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img src="<%=require('./images/Jacques-YvesCousteau.jpg')%>" alt="Аватар" class="profile__avatar">
+      <div class="profile__avatar"></div>
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
@@ -50,10 +50,32 @@
           <span class="popup__input-error title-input-error"></span>
           </label>
           <label class="popup__label">
-            <input type="url" name="link" id="url-input" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
-          <span class="popup__input-error url-input-error"></span>
+            <input type="url" name="description" id="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
+          <span class="popup__input-error url-error"></span>
           </label>
           <button class="popup__save-button popup__save-button_disabled" type="submit" disabled>Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup confirm">
+      <div class="popup__container">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__close-button" type="button"></button>
+        <form class="popup__form popup__form-add" name="editProfileForm" novalidate>
+          <button class="popup__save-button" type="submit">ДА</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <button class="popup__close-button" type="button"></button>
+        <form class="popup__form popup__form-add" name="editProfileForm" novalidate>
+          <label class="popup__label">
+            <input type="url" name="avatar" id="avatar" placeholder="Ссылка на картинку" class="popup__input popup__input_type_description" required>
+          <span class="popup__input-error avatar-error"></span>
+          </label>
+          <button class="popup__save-button popup__save-button_disabled" type="submit">Создать</button>
         </form>
       </div>
     </div>
@@ -64,6 +86,7 @@
         <h3 class= "popup__subtitle">Кот</h3>
       </div>
     </div>
+  </div>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy;2022. Mesto Russia</p>
@@ -74,7 +97,10 @@
       <button class="element__button-trash" type="button"></button>
       <div class="element__container">
         <h2 class="element__title"></h2>
-        <button class="element__button" type="button"></button>
+        <div class="element__like-container">
+          <button class="element__button" type="button"></button>
+          <span class="element__like-counter">0</span>
+        </div>
       </div>  
     </article>
   </template>
