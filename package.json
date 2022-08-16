@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve",
-    "build": "webpack",
+    "build": "rm -rf dist && webpack --mode production",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Apocaliption/mesto.git"
   },
-  "author": "",
+  "author": "Gleb",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Apocaliption/mesto/issues"

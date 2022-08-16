@@ -3,7 +3,7 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   grid-gap: 16px 18px;
-  margin: 0 auto 0 0;
+  margin: 0 auto 0 30px;
 }
 
 @media screen and (max-width: 680px) {
